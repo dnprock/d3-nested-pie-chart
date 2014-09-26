@@ -1,5 +1,7 @@
 # Nested Pie Chart using d3.js
 
+See the [demo](http://aashe.github.io/d3-nested-pie-chart).
+
 ## Background
 
 We built a simple visualization to display some nested scoring data. For
@@ -22,8 +24,13 @@ structure easily with an outline:
 
 Each category or subcategory represents a slice of the pie chart. Each slice is
 filled out to a certain percentage, representing their score. For example, the
-first category above would fill 40% of the area of the pie slice.
+first category above would fill 40% of the area of the pie slice. The slice
+itself would actually be just over a 3rd of the overall pie chart, since it's
+worth 10 and the other two are 10 and 8.
 
 Clicking on a slice then clears the chart and brings up the child pie chart on
 down the tree. A small circle is drawn in the center as a button to go back up
 a level.
+
+Currently each level is called from a JSON file (or api call). This may make
+sense to change eventually, by allowing a single file.
