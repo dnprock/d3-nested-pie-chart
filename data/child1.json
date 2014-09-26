@@ -1,0 +1,36 @@
+{
+  "slices": [
+    {
+      "child_chart": "/data/grandchild1-1.json",
+      "fill_fraction": 0.40,
+      "id": "gc1-1",
+      "long_title": "1st Grandchild",
+      "title": "gc1",
+      "value": 40
+    },
+    {
+      "child_chart": "/data/grandchild1-2.json",
+      "fill_fraction": 0.2,
+      "id": "gc1-2",
+      "long_title": "2nd Grandchild",
+      "title": "gc1-2",
+      "value": 25
+    },
+    {
+      "child_chart": "/data/grandchild1-3.json",
+      "fill_fraction": 0.7,
+      "id": "gc1-3",
+      "long_title": "3rd Grandchild",
+      "title": "gc1-3",
+      "value": 30
+    },
+    {
+      "child_chart": "/data/grandchild1-4.json",
+      "fill_fraction": 0.5,
+      "id": "gc1-4",
+      "long_title": "4th Grandchild",
+      "title": "gc1-4",
+      "value": 5
+    }
+  ]
+}

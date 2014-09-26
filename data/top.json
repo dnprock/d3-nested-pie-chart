@@ -1,0 +1,35 @@
+{
+  "objects": [
+    {
+      "id": 1,
+      "name": "top_level_chart",
+      "resource_uri": "",
+      "slices": [
+        {
+          "child_chart": "data/child1.json",
+          "fill_fraction": 0.80,
+          "id": "s1",
+          "long_title": "Section",
+          "title": "c1",
+          "value": 25
+        },
+        {
+          "child_chart": "data/child2.json",
+          "fill_fraction": 0.50,
+          "id": "c2",
+          "long_title": "2nd Child",
+          "title": "c2",
+          "value": 60
+        },
+        {
+          "child_chart": "data/child3.json",
+          "fill_fraction": 0.60,
+          "id": "c3",
+          "long_title": "3rd Child",
+          "title": "c3",
+          "value": 15
+        }
+      ]
+    }
+  ]
+}

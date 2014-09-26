@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>d3 Spider Graph</title>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script>
+
+      var fill_colors = [
+          "#0080CF", "#00BCE4",
+          "#6BBC49", "#CEDC45",
+          "#5160AB", "#A486BD"
+      ]
+          // "#a9ad70", "#aa9882", "#b1adac", "#bfb18e",
+      var stroke_colors = [
+      	"#15387F", "#15387F",
+      	"#00A060", "#00A060","#3C2985"
+      ];
+
+      fill_func = function() {
+          return d3.scale.ordinal().range(fill_colors);
+      };
+
+      stroke_func = function() {
+          return d3.scale.ordinal().range(stroke_colors);
+      };
+
+      function tweenOpacity(o) {
+        return function(d, i, a) {
+            return d3.interpolate(a, o)
+        }
+      }
+    </script>
+
+    <style type="text/css">
+
+      #viz {
+        font: 10px sans-serif;
+        margin: 0px auto;
+        width: 700px;
+        height: 700px;
+      }
+
+      .border {
+        stroke: #ddd;
+        fill: #f5f5f5;
+      }
+
+      .reset_button {
+        stroke: #00A060;
+        fill: #00A060;
+      }
+
+      .reset_button_disabled {
+        stroke: #f5f5f5;
+        fill: #f5f5f5;
+      }
+
+      .pie_title {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viz"></div>
+    <script src="d3-nested-pie-chart.js"></script>
+  </body>
+</html>

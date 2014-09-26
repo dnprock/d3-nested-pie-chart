@@ -1,0 +1,32 @@
+{
+  "slices": [
+    {
+      "fill_fraction": 0.8,
+      "id": "ggc1",
+      "long_title": "1st Greatgrandchild",
+      "title": "ggc1",
+      "value": 10
+    },
+    {
+      "fill_fraction": 0.2,
+      "id": "ggc2",
+      "long_title": "2nd Greatgrandchild",
+      "title": "ggc2",
+      "value": 15
+    },
+    {
+      "fill_fraction": 0.7,
+      "id": "ggc3",
+      "long_title": "3rd Greatgrandchild",
+      "title": "ggc3",
+      "value": 20
+    },
+    {
+      "fill_fraction": 0.5,
+      "id": "ggc4",
+      "long_title": "4th Greatgrandchild",
+      "title": "ggc4",
+      "value": 55
+    }
+  ]
+}
