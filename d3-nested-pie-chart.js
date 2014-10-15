@@ -42,6 +42,7 @@ function d3NestedPieChart() {
   ];
   
   var width = config.width, height = config.height;
+  var margin = {top: 40, bottom: 40};
   
   var my_selection;
 
@@ -54,9 +55,7 @@ function d3NestedPieChart() {
   function drawChart() {
   	my_selection.each(function(d, i) {
       all_data = d;
-      var r = 200,
-          w = width,
-          h = height,
+      var r = width / 2 - margin.top - margin.bottom,
           inner_r = r*.1
           label_r = r*1.25,
           top_chart_name = "pie1",
@@ -137,7 +136,7 @@ function d3NestedPieChart() {
            .enter().append("svg:g")
              .attr("class", classname + "_arcs")
              .on('click', function(d, i) { return selectSlice(d, i, classname, parent_slice); })
-             .attr("transform", "translate(" + (w / 2) + "," + (h / 2) + ")");
+             .attr("transform", "translate(" + (width / 2) + "," + (height / 2) + ")");
 
           arcs.append("svg:title")
           	.text(function(d, i) { return d.data.long_title + "\n\n  (" + Math.round(d.data.fill_fraction*100) + "%)" });
@@ -308,20 +307,20 @@ function d3NestedPieChart() {
       //setup svg canvas
       var vis = d3.select("#viz")
           .append("svg:svg")
-             .attr("width", w)
-             .attr("height", h)
+             .attr("width", width)
+             .attr("height", height)
              .attr("id", "charts");
 
       // Add the outer circle
       vis.append("svg:circle")
                .attr("class", "border")
-               .attr("cx", w / 2)
-               .attr("cy", h / 2)
+               .attr("cx", width / 2)
+               .attr("cy", height / 2)
                .attr("r", r);
 
       vis.append("svg:circle")
-        .attr("cx", w / 2)
-        .attr("cy", h / 2)
+        .attr("cx", width / 2)
+        .attr("cy", height / 2)
         .attr("r", inner_r * .9)
         .attr("class", "reset_button_disabled")
         .attr("id", "reset_button")
@@ -332,7 +331,7 @@ function d3NestedPieChart() {
       	.style("fill", "#333")
       	.style("font-size", "2em")
        	.attr('class', 'pie_title')
-       	.attr('x', w / 2)
+       	.attr('x', width / 2)
        	.attr('y', 30)
        	.attr("text-anchor", "middle")
        	.attr('id', 'pie_title')
