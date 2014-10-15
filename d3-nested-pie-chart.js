@@ -40,9 +40,9 @@ function d3NestedPieChart() {
   	//"#15387F", "#15387F",
   	//"#00A060", "#00A060","#3C2985"
   ];
-  
+
   var width = config.width, height = config.height;
-  
+
   var my_selection;
 
   function tweenOpacity(o) {
@@ -50,7 +50,7 @@ function d3NestedPieChart() {
         return d3.interpolate(a, o)
     }
   }
-  
+
   function drawChart() {
   	my_selection.each(function(d, i) {
       all_data = d;
@@ -293,9 +293,9 @@ function d3NestedPieChart() {
               	var child_data = all_data.objects.filter(function(d) {
               	  return d.name === chart_data;
               	});
-        	
+
               	drawPie(vis, new_classname, child_data[0].slices, d, classname);
-        	
+
               	//draw_wrapper(child_data, new_classname, d, classname);
               	//d3.json(chart_data, draw_wrapper(vis, new_classname, d, classname));
           	}

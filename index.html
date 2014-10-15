@@ -3,26 +3,6 @@
     <title>d3 Nested Pie Chart</title>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
-    <script>
-      d3.json("data.json", function(data) {
-        d3.select("#viz")
-          .datum(data)
-          .call(
-            d3NestedPieChart().fillPalette([
-              "red", "blue",
-              "yellow", "grey",
-              "green", "black"
-            ])
-            .strokePalette([
-              "red", "blue",
-              "yellow", "grey",
-              "green", "black"
-            ])
-            .width(500)
-            .height(500)
-          );
-      });
-    </script>
 
     <style type="text/css">
 
@@ -55,6 +35,44 @@
   </head>
   <body>
     <div id="viz"></div>
+
     <script src="d3-nested-pie-chart.js"></script>
+
+    <script>
+      fillPalette = [
+        "red", "blue",
+        "yellow", "grey",
+        "green", "black"
+      ];
+      strokePalette = [
+        "red", "blue",
+        "yellow", "grey",
+        "green", "black"
+      ];
+
+      chart1 = d3NestedPieChart()
+      .fillPalette(fillPalette)
+      .strokePalette(strokePalette)
+      .width(500)
+      .height(500);
+
+      chart2 = d3NestedPieChart()
+      .fillPalette(fillPalette)
+      .strokePalette(strokePalette)
+      .width(300)
+      .height(300);
+
+      d3.json("data.json", function(data) {
+        d3.select("#viz")
+          .datum(data)
+          .call(chart1);
+      });
+
+      d3.json("data.json", function(data) {
+        d3.select("#viz")
+          .datum(data)
+          .call(chart2);
+      });
+    </script>
   </body>
 </html>
