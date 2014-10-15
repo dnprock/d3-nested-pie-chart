@@ -6,7 +6,7 @@
 
     <style type="text/css">
 
-      #viz {
+      .viz {
         font: 10px sans-serif;
         margin: 0px auto;
         width: 700px;
@@ -34,7 +34,9 @@
     </style>
   </head>
   <body>
-    <div id="viz"></div>
+    <div id="chart-1" class="viz"></div>
+    
+    <div id="chart-2" class="viz"></div>
 
     <script src="d3-nested-pie-chart.js"></script>
 
@@ -63,13 +65,13 @@
       .height(300);
 
       d3.json("data.json", function(data) {
-        d3.select("#viz")
+        d3.select("#chart-1")
           .datum(data)
           .call(chart1);
       });
 
       d3.json("data.json", function(data) {
-        d3.select("#viz")
+        d3.select("#chart-2")
           .datum(data)
           .call(chart2);
       });

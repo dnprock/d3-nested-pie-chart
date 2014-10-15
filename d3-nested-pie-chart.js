@@ -1,5 +1,7 @@
 function d3NestedPieChart() {
   var all_data;
+  
+  var vis;
 
   var config = {
       width: 700, height: 700,
@@ -56,7 +58,7 @@ function d3NestedPieChart() {
   	my_selection.each(function(d, i) {
       all_data = d;
       var r = width / 2 - margin.top - margin.bottom,
-          inner_r = r*.1
+          inner_r = r*.1,
           label_r = r*1.25,
           top_chart_name = "pie1",
           fill_color = fill_func(),
@@ -205,32 +207,32 @@ function d3NestedPieChart() {
           	parent_classname = parent_stack[parent_stack.length-1].name
          		title = parent_stack[parent_stack.length-1].title
           	// remove current
-          	labels = d3.selectAll("." + classname + "_labels")
+          	labels = vis.selectAll("." + classname + "_labels")
           	labels.transition()
               	.ease("sin")
                   .duration(1000)
                   .styleTween("opacity", tweenOpacity(0));
-          	fills = d3.selectAll("." + classname + "_fills")
+          	fills = vis.selectAll("." + classname + "_fills")
           	fills.transition()
               	.ease("bounce")
                   .duration(1000)
                   .attrTween("d", tweenHidePie);
-          	lines = d3.selectAll("." + classname + "_lines")
+          	lines = vis.selectAll("." + classname + "_lines")
           	lines.transition()
               	.ease("bounce")
                   .duration(1000)
                   .attrTween("d", tweenHidePie);
 
           	if(parent_stack.length == 1)
-          		d3.select("#reset_button").attr("class", "reset_button_disabled")
+          		vis.select("#reset_button").attr("class", "reset_button_disabled")
 
-          	d3.select("#pie_title").text(title);
+          	vis.select("#pie_title").text(title);
 
           	// unhide parents
 
-          	labels = d3.selectAll("." + parent_classname + "_labels")
-          	fills = d3.selectAll("." + parent_classname + "_fills")
-          	lines = d3.selectAll("." + parent_classname + "_lines")
+          	labels = vis.selectAll("." + parent_classname + "_labels")
+          	fills = vis.selectAll("." + parent_classname + "_fills")
+          	lines = vis.selectAll("." + parent_classname + "_lines")
           	runShowTweens(lines, fills, labels);
       	}
       }
@@ -243,25 +245,25 @@ function d3NestedPieChart() {
 
       	if(chart_data) {
           	// Hide parents
-          	d3.selectAll("." + classname + "_labels")
+          	vis.selectAll("." + classname + "_labels")
           		.transition()
               	.ease("sin")
                   .duration(1000)
                   .styleTween("opacity", tweenOpacity(0));
 
-          	d3.selectAll("." + classname + "_fills")
+          	vis.selectAll("." + classname + "_fills")
           		.transition()
               	.ease("bounce")
                   .duration(1000)
                   .attrTween("d", tweenHidePie);
 
-          	d3.selectAll("." + classname + "_lines")
+          	vis.selectAll("." + classname + "_lines")
           		.transition()
               	.ease("bounce")
                   .duration(1000)
                   .attrTween("d", tweenHidePie);
 
-      		d3.select("#reset_button")
+      		vis.select("#reset_button")
       	      .attr("class", "reset_button")
 
       /*           	vis.append("svg:circle")
@@ -278,10 +280,10 @@ function d3NestedPieChart() {
       								'title': d.data.title
       							}
       						);
-              d3.select("#pie_title").text(d.data.title);
+              vis.select("#pie_title").text(d.data.title);
 
           	// Draw the new one if it doesn't already exist
-          	fills = d3.selectAll("." + new_classname + "_fills")
+          	fills = vis.selectAll("." + new_classname + "_fills")
           	if(fills[0].length == 0) {
               	draw_wrapper = function(vis, classname, parent_slice, parent_classname) {
                       return function(json) {
@@ -299,13 +301,13 @@ function d3NestedPieChart() {
               	//d3.json(chart_data, draw_wrapper(vis, new_classname, d, classname));
           	}
           	else {
-          		runShowTweens(d3.selectAll("." + new_classname + "_lines"), d3.selectAll("." + new_classname + "_fills"), d3.selectAll("." + new_classname + "_labels"));
+          		runShowTweens(vis.selectAll("." + new_classname + "_lines"), vis.selectAll("." + new_classname + "_fills"), vis.selectAll("." + new_classname + "_labels"));
           	}
       	}
       }
 
       //setup svg canvas
-      var vis = d3.select("#viz")
+      vis = d3.select(this)
           .append("svg:svg")
              .attr("width", width)
              .attr("height", height)
